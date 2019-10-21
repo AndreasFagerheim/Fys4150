@@ -1,7 +1,12 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Theory}{}% 2
 \BOOKMARK [1][-]{section.3}{Methods}{}% 3
-\BOOKMARK [1][-]{section.4}{Results}{}% 4
-\BOOKMARK [1][-]{section.5}{Discussion}{}% 5
-\BOOKMARK [2][-]{subsection.5.1}{Subsection One}{section.5}% 6
-\BOOKMARK [2][-]{subsection.5.2}{Subsection Two}{section.5}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Gauss-Legendre Quadrature}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Gauss-Laguerre Quadrature}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Monte Carlo brute force}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Monte Carlo method improved}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Results}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Gauss-Legendre Quadrature}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 10
+\BOOKMARK [2][-]{subsection.5.1}{Subsection One}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.2}{Subsection Two}{section.5}% 12

@@ -1,0 +1,19 @@
+Exact value of integration: 0.1928
+
+Integrating using Gauss-Legendre Quadrature with a order N polynomal.
+------------------------------------------------------------
+    N     Numerical value
+   10     0.145
+   20   0.18805
+   30   0.19472
+   10     0.145
+   10     0.145
+   10   0.14629
+   10   0.14629
+   10   0.14629
+   10   0.14583
+   10   0.14629
+   10   0.14583
+   10   0.14583
+   10   0.14455
+   10  0.011017

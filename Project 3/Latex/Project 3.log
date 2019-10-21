@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  16 OCT 2019 23:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  21 OCT 2019 02:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -21,6 +21,33 @@ File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box27
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
@@ -60,15 +87,10 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2019/02/28 v2.7b Micro-typographical refinements (RS)
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks14
-)
 \MT@toks=\toks15
 \MT@count=\count106
 LaTeX Info: Redefining \textls on input line 790.
-\MT@outer@kern=\dimen103
+\MT@outer@kern=\dimen105
 LaTeX Info: Redefining \textmicrotypecontext on input line 1336.
 \MT@listname@count=\count107
 
@@ -96,7 +118,7 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2019/05/04 3.31 Babel common definitions
 \babel@savecnt=\count108
-\U@D=\dimen104
+\U@D=\dimen106
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@dirlevel=\count109
@@ -121,14 +143,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@cnth=\count110
 \Gm@cntv=\count111
 \c@Gm@tempcnt=\count112
-\Gm@bindingoffset=\dimen105
-\Gm@wd@mp=\dimen106
-\Gm@odd@mp=\dimen107
-\Gm@even@mp=\dimen108
-\Gm@layoutwidth=\dimen109
-\Gm@layoutheight=\dimen110
-\Gm@layouthoffset=\dimen111
-\Gm@layoutvoffset=\dimen112
+\Gm@bindingoffset=\dimen107
+\Gm@wd@mp=\dimen108
+\Gm@odd@mp=\dimen109
+\Gm@even@mp=\dimen110
+\Gm@layoutwidth=\dimen111
+\Gm@layoutheight=\dimen112
+\Gm@layouthoffset=\dimen113
+\Gm@layoutvoffset=\dimen114
 \Gm@dimlist=\toks16
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption.sty
@@ -137,36 +159,37 @@ Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen113
-\captionmargin@=\dimen114
-\captionwidth=\dimen115
-\caption@tempdima=\dimen116
-\caption@indent=\dimen117
-\caption@parindent=\dimen118
-\caption@hangindent=\dimen119
+\captionmargin=\dimen115
+\captionmargin@=\dimen116
+\captionwidth=\dimen117
+\caption@tempdima=\dimen118
+\caption@indent=\dimen119
+\caption@parindent=\dimen120
+\caption@hangindent=\dimen121
 )
 \c@caption@flags=\count113
 \c@ContinuedFloat=\count114
+Package caption Info: threeparttable package is loaded.
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen120
-\lightrulewidth=\dimen121
-\cmidrulewidth=\dimen122
-\belowrulesep=\dimen123
-\belowbottomsep=\dimen124
-\aboverulesep=\dimen125
-\abovetopsep=\dimen126
-\cmidrulesep=\dimen127
-\cmidrulekern=\dimen128
-\defaultaddspace=\dimen129
+\heavyrulewidth=\dimen122
+\lightrulewidth=\dimen123
+\cmidrulewidth=\dimen124
+\belowrulesep=\dimen125
+\belowbottomsep=\dimen126
+\aboverulesep=\dimen127
+\abovetopsep=\dimen128
+\cmidrulesep=\dimen129
+\cmidrulekern=\dimen130
+\defaultaddspace=\dimen131
 \@cmidla=\count115
 \@cmidlb=\count116
-\@aboverulesep=\dimen130
-\@belowrulesep=\dimen131
+\@aboverulesep=\dimen132
+\@belowrulesep=\dimen133
 \@thisruleclass=\count117
 \@lastruleclass=\count118
-\@thisrulewidth=\dimen132
+\@thisrulewidth=\dimen134
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lettrine/lettrine.sty
 File: lettrine.sty 2019-04-06 v2.22 (Daniel Flipo)
@@ -178,29 +201,29 @@ Package: minifp 2013/12/30 v0.96. Macros for real number operations and a stack
 )
 \c@DefaultLines=\count120
 \c@DefaultDepth=\count121
-\DefaultFindent=\dimen133
-\DefaultNindent=\dimen134
-\DefaultSlope=\dimen135
-\DiscardVskip=\dimen136
-\L@lbox=\box27
-\L@tbox=\box28
+\DefaultFindent=\dimen135
+\DefaultNindent=\dimen136
+\DefaultSlope=\dimen137
+\DiscardVskip=\dimen138
+\L@lbox=\box28
+\L@tbox=\box29
 \c@L@lines=\count122
 \c@L@depth=\count123
-\L@Pindent=\dimen137
-\L@Findent=\dimen138
-\L@Nindent=\dimen139
-\L@lraise=\dimen140
-\L@first=\dimen141
-\L@next=\dimen142
-\L@slope=\dimen143
-\L@height=\dimen144
-\L@novskip=\dimen145
-\L@target@ht=\dimen146
-\L@target@dp=\dimen147
-\L@target@tht=\dimen148
-\LettrineWidth=\dimen149
-\LettrineHeight=\dimen150
-\LettrineDepth=\dimen151
+\L@Pindent=\dimen139
+\L@Findent=\dimen140
+\L@Nindent=\dimen141
+\L@lraise=\dimen142
+\L@first=\dimen143
+\L@next=\dimen144
+\L@slope=\dimen145
+\L@height=\dimen146
+\L@novskip=\dimen147
+\L@target@ht=\dimen148
+\L@target@dp=\dimen149
+\L@target@tht=\dimen150
+\LettrineWidth=\dimen151
+\LettrineHeight=\dimen152
+\LettrineDepth=\dimen153
 \Llist@everypar=\toks17
 
 Loading lettrine.cfg
@@ -208,9 +231,9 @@ Loading lettrine.cfg
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/02/04 v3.8 Customized lists
 \labelindent=\skip44
-\enit@outerparindent=\dimen152
+\enit@outerparindent=\dimen154
 \enit@toks=\toks18
-\enit@inbox=\box29
+\enit@inbox=\box30
 \enit@count@id=\count124
 \enitdp@description=\count125
 )
@@ -224,15 +247,15 @@ Package: abstract 2009/06/08 v1.2a configurable abstracts
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box30
+\ttl@box=\box31
 \beforetitleunit=\skip50
 \aftertitleunit=\skip51
-\ttl@plus=\dimen153
-\ttl@minus=\dimen154
+\ttl@plus=\dimen155
+\ttl@minus=\dimen156
 \ttl@toksa=\toks19
-\titlewidth=\dimen155
-\titlewidthlast=\dimen156
-\titlewidthfirst=\dimen157
+\titlewidth=\dimen157
+\titlewidthlast=\dimen158
+\titlewidthfirst=\dimen159
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/titlesec/block.tss
 File: block.tss 2016/03/15
@@ -304,7 +327,7 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen158
+\@linkdim=\dimen160
 \Hy@linkcounter=\count126
 \Hy@pagecounter=\count127
 
@@ -332,10 +355,10 @@ Package hyperref Info: Bookmarks ON on input line 4772.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5125.
-\XeTeXLinkMargin=\dimen159
+\XeTeXLinkMargin=\dimen161
 \Fld@menulength=\count130
-\Field@Width=\dimen160
-\Fld@charsize=\dimen161
+\Field@Width=\dimen162
+\Fld@charsize=\dimen163
 Package hyperref Info: Hyper figures OFF on input line 6380.
 Package hyperref Info: Link nesting OFF on input line 6385.
 Package hyperref Info: Hyper index ON on input line 6388.
@@ -366,28 +389,58 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (./Project 3.aux)
 \openout1 = `"Project 3.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Try loading font information for T1+pplx on input line 100.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Try loading font information for T1+pplx on input line 103.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/t1pplx.fd
 File: t1pplx.fd 2004/09/06 font definitions for T1/pplx.
 )
-\big@size=\dimen162
-LaTeX Info: Redefining \microtypecontext on input line 100.
+(/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count136
+\scratchdimen=\dimen164
+\scratchbox=\box32
+\nofMPsegments=\count137
+\nofMParguments=\count138
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count139
+\MPscratchDim=\dimen165
+\MPnumerator=\count140
+\makeMPintoPDFobject=\count141
+\everyMPtoPDFconversion=\toks21
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\big@size=\dimen166
+LaTeX Info: Redefining \microtypecontext on input line 103.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -410,14 +463,14 @@ File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * hratio: 1:1
 * modes: twoside 
-* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* h-part:(L,W,R)=(66.86414pt, 480.56673pt, 66.86414pt)
 * v-part:(T,H,B)=(91.04881pt, 608.5238pt, 95.39737pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=430.00462pt
+* \textwidth=480.56673pt
 * \textheight=608.5238pt
-* \oddsidemargin=19.8752pt
-* \evensidemargin=19.8752pt
+* \oddsidemargin=-5.40585pt
+* \evensidemargin=-5.40585pt
 * \topmargin=-18.22118pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -439,51 +492,51 @@ File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 100.
+\AtBeginShipoutBox=\box33
+Package hyperref Info: Link coloring OFF on input line 103.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count136
+\c@section@level=\count142
 )
-LaTeX Info: Redefining \ref on input line 100.
-LaTeX Info: Redefining \pageref on input line 100.
-LaTeX Info: Redefining \nameref on input line 100.
+LaTeX Info: Redefining \ref on input line 103.
+LaTeX Info: Redefining \pageref on input line 103.
+LaTeX Info: Redefining \nameref on input line 103.
 
 (./Project 3.out) (./Project 3.out)
 \@outlinefile=\write3
 \openout3 = `"Project 3.out"'.
 
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 104.
-LaTeX Font Info:    Try loading font information for OT1+pplx on input line 104
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 107.
+LaTeX Font Info:    Try loading font information for OT1+pplx on input line 107
 .
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pplx.fd
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 104
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 107
 .
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 104
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 107
 .
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 104
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 107
 .
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 104
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 107
 .
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1zplm.fd
@@ -496,18 +549,18 @@ Package microtype Info: Loading generic protrusion settings for font family
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplx/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Try loading font information for OMS+pplx on input line 104
+LaTeX Font Info:    Try loading font information for OMS+pplx on input line 107
 .
-LaTeX Font Info:    No file OMSpplx.fd. on input line 104.
+LaTeX Font Info:    No file OMSpplx.fd. on input line 107.
 
 
 LaTeX Font Warning: Font shape `OMS/pplx/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textasteriskcentered' on input line 104.
+(Font)              for symbol `textasteriskcentered' on input line 107.
 
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 104.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 104.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 107.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 107.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -516,51 +569,74 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+LaTeX Warning: Command \ss invalid in math mode on input line 161.
+
+Missing character: There is no ÿ in font pplr9t!
+[1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <9> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 183.
+<figure1.png, id=74, 433.62pt x 289.08pt>
+File: figure1.png Graphic file (type png)
+<use figure1.png>
+Package pdftex.def Info: figure1.png  used on input line 180.
+(pdftex.def)             Requested size: 238.49173pt x 158.99448pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--214
+Overfull \hbox (8.20837pt too wide) in paragraph at lines 180--181
+ [] 
+ []
+
+LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <9> not available
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 181.
+
+Underfull \hbox (badness 3884) in paragraph at lines 205--206
+\T1/pplx/m/n/10 (+20) The im-ple-mented Gauss-Legendre Quadra-ture
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--241
 \T1/pplx/m/n/10 (+20) A state-ment re-quir-ing ci-ta-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--214
-\T1/pplx/m/n/10 (+20) [[]]. Lorem ip-
+Underfull \hbox (badness 2521) in paragraph at lines 239--241
+\T1/pplx/m/n/10 (+20) [[]]. Lorem ip-sum do-
  []
 
-[2]
-Underfull \hbox (badness 1748) in paragraph at lines 226--230
-[]\T1/pplx/m/n/10 (+20) Figueredo, A. J.
+[2 <./figure1.png>]
+Underfull \hbox (badness 1360) in paragraph at lines 253--257
+[]\T1/pplx/m/n/10 (+20) Figueredo, A. J. and
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 235.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 262.
 [3
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 235.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 262.
  (./Project 3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 235.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 235.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 262.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 262.
 Package rerunfilecheck Info: File `"Project 3".out' has not changed.
-(rerunfilecheck)             Checksum: 88A46D6C1A33C633D2B405BD8126FD74;343.
+(rerunfilecheck)             Checksum: 837C816B83B5B700E3067E2E8FCFE2FE;716.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 235.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 262.
  ) 
 Here is how much of TeX's memory you used:
- 9819 strings out of 492616
- 152398 string characters out of 6129481
- 293969 words of memory out of 5000000
- 13417 multiletter control sequences out of 15000+600000
- 67859 words of font info for 215 fonts, out of 8000000 for 9000
+ 10700 strings out of 492616
+ 164789 string characters out of 6129481
+ 308906 words of memory out of 5000000
+ 14209 multiletter control sequences out of 15000+600000
+ 71379 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,12n,43p,256b,459s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,12n,43p,531b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
@@ -575,10 +651,10 @@ s/type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/u
 rw/palatino/uplr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/pala
 tino/uplri8a.pfb>
-Output written on "Project 3.pdf" (3 pages, 155298 bytes).
+Output written on "Project 3.pdf" (3 pages, 172642 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 500000)
- 59449 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 146 PDF objects out of 1000 (max. 8388607)
+ 125 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 64614 words of extra memory for PDF output out of 74296 (max. 10000000)
 

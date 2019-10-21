@@ -21,6 +21,9 @@
 
 \documentclass[twoside,twocolumn]{article}
 
+%\usepackage{booktabs,caption}
+\usepackage[flushleft]{threeparttable}
+\usepackage{graphicx}
 \usepackage{blindtext} % Package to generate dummy text throughout this template 
 
 \usepackage[sc]{mathpazo} % Use the Palatino font
@@ -30,7 +33,7 @@
 
 \usepackage[english]{babel} % Language hyphenation and typographical rules
 
-\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt, left= 2.35cm, right = 2.35cm]{geometry} % Document margins
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
 \usepackage{booktabs} % Horizontal rules in tables
 
@@ -109,30 +112,27 @@ Gauss-Laguerre quadrature and Monte-Carlo integration.
 \section{Theory}
 
 %\lettrine[nindent=0em,lines=3]{W} 
-We assume that the wave function of each electron can be modelled like
+The wave function of each electron can be assumed to be modelled like
 the single-particle wave function of an electron in the hydrogen
 atom. The single-particle wave function for an electron $i$ in the
-$1s$ state is given in terms of a dimensionless variable (the wave
-function is not properly normalized)
+$1s$ state can the be modelled by:
 
-\[
-   {\bf r}_i =  x_i {\bf e}_x + y_i {\bf e}_y +z_i {\bf e}_z ,
-\]
-as
-\[
-   \psi_{1s}({\bf r}_i)  =   e^{-\alpha r_i},
-\]
-where $\alpha$ is a parameter and 
+
+
+\begin{equation}
+		\psi_{1s}({\bf r}_i)  =   e^{-\alpha r_i}.
+\end{equation}
+The parameter $\alpha$ is connected to the charge of the atom and will in our case be set to equal 2 to correspond to the helium atom $Z = 2$. Furthermore $r_i$ is the magnitude of the position vector ${\bf r}_i$ and is given by
 \[
 r_i = \sqrt{x_i^2+y_i^2+z_i^2}.
 \]
-
-We will fix $\alpha=2$, which should correspond to the charge of the helium atom $Z=2$. 
-
+and
+\[
+   {\bf r}_i =  x_i {\bf e}_x + y_i {\bf e}_y +z_i {\bf e}_z ,
+\]
 The ansatz for the wave function for two electrons is then given by the product of two 
 so-called 
 $1s$ wave functions as 
-
 \[
    \Psi({\bf r}_1,{\bf r}_2)  =   e^{-\alpha (r_1+r_2)}.
 \]
@@ -145,33 +145,54 @@ The integral we need to solve is the quantum mechanical expectation
 value of the correlation energy between two electrons which repel each
 other via the classical Coulomb interaction, namely
 
-\begin{equation}\label{eq:correlationenergy}
-   \langle \frac{1}{|{\bf r}_1-{\bf r}_2|} \rangle =
-   \int_{-\infty}^{\infty} d{\bf r}_1d{\bf r}_2  e^{-2\alpha (r_1+r_2)}\frac{1}{|{\bf r}_1-{\bf r}_2|}.
+\begin{equation} \label{integral}
+   \langle \frac{1}{|{\bf r}_1-{\bf r}_2|} \rangle=\int_{-\infty}^{\infty} d{\bf r}_1d{\bf r}_2  e^{-2\alpha (r_1+r_2)}\frac{1}{|{\bf r}_1-{\bf r}_2|}.
 \end{equation}
 
-Note that our wave function is not normalized. There is a
-normalization factor missing, but for this project we don't need to
-worry about that.
+Note that our wave function is not normalized, but we dont nedd to worry abou this.
 
 This integral can be solved in closed form and the answer is
-$5\pi^2/16^2$. Can you derive this value?
+$5\pi^2/16^2$.
 
 %------------------------------------------------
 
 \section{Methods}
+The integral will be solved using four numerical methods. First numerical integration method  we set forth to explore is the Gaussian Quadrature which concept is to make use of a weight function $W(x)$ to give more emphasis to one part of the interval we integrate over than another. The basic idea behind this method is to approximate the integral
+\begin{equation}ß
+   I = \int_{a}^{b}f(x)dx = \int_{a}^{b} W(x)g(x) dx \approx\sum_{i=1}^{N} w_ig(x_i)
+\end{equation}
+Where $w_i$ is the weights and obtained through orthogonal polynomials. These polynomials are orthogonal in some interval $[a,b]$ and the points $x_i$ is constrained to lie in this interval. Different weight functions, $W(x)$ gives rise to different methods and we will look  closer at Gaussian-Legendre ($W(x) = 1$) and Gaussian-Laguerre ($W(x)  = x^\alpha e^{-x}$). These weight functions get their polynomials from the intervals $[-1,1]$ and $[0,\infty\rangle$. The integral (\ref{integral})
+we are working to solve has the limits $x\in[-\infty,\infty]$ and therefore need to rewrite the integral for to be in the right limits. By changing variable
+\begin{equation}
+		t= \frac{b-a}{2}x + \frac{b+a}{2}
+\end{equation}
+we can do this
+\begin{equation}
+		\int_a^b f(x) dx = \frac{b-a}{2} \int_{-1}^1f( \frac{b-a}{2}x + \frac{b+a}{2})
+\end{equation}
 
-Maecenas sed ultricies felis. Sed imperdiet dictum arcu a egestas. 
-\begin{itemize}
-\item Donec dolor arcu, rutrum id molestie in, viverra sed diam
-\item Curabitur feugiat
-\item turpis sed auctor facilisis
-\item arcu eros accumsan lorem, at posuere mi diam sit amet tortor
-\item Fusce fermentum, mi sit amet euismod rutrum
-\item sem lorem molestie diam, iaculis aliquet sapien tortor non nisi
-\item Pellentesque bibendum pretium aliquet
-\end{itemize}
-\blindtext % Dummy text
+
+\subsection{Gauss-Legendre Quadrature}
+The weight function $W(x) = 1$ is used in Gauss-Legendre Quadrature and use Legendre polynomials in the interval $[-1,1]$
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.55]{figure1.png}
+\caption{Plot of the single particle wave function to find appropiate limits}
+\end{figure}
+\subsection{Gauss-Laguerre Quadrature}
+
+\begin{equation}
+	\tilde{x}_i = tan(\frac{\pi}{4}(1+x_i)
+\end{equation}
+
+\begin{equation}
+	\tilde{w}_i = \frac{\pi}{4}\frac{w_i}{\cos^2(\frac{\pi}{4}(1+x_i))}
+\end{equation}
+
+where $w_i$ and$x_i$ are the original weights and mesh points in the interval [-1,1], while $tilde{w}_i$ and $\tilde{x}_i$ are the new weights and mesh points in the interval $[0,\infty\rangle$.
+\subsection{Monte Carlo brute force}
+\subsection{Monte Carlo method improved}
 
 Text requiring further explanation\footnote{Example footnote}.
 
@@ -179,29 +200,35 @@ Text requiring further explanation\footnote{Example footnote}.
 
 \section{Results}
 
-\begin{table}
-\caption{Example table}
-\centering
-\begin{tabular}{llr}
-\toprule
-\multicolumn{2}{c}{Name} \\
-\cmidrule(r){1-2}
-First name & Last Name & Grade \\
-\midrule
-John & Doe & $7.5$ \\
-Richard & Miles & $2$ \\
-\bottomrule
+
+\subsection{Gauss-Legendre Quadrature}
+The implemented Gauss-Legendre Quadrature method yields the results given in \textbf{Table 1} when used to solve (\ref{integral}). With $N=25$ the relative error is at its lowest, but is still $1.9 \%$.
+
+
+\par
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+\begin{tabular}{|l|l|c|}
+\hline
+N  & Integral & \multicolumn{1}{l|}{Relative error} \\ \hline
+5  & 0.354602 & 0.83950         \\ \hline
+10 & 0.129834 & 0.32650         \\ \hline
+15 & 0.199475 & 0.03480         \\ \hline
+20 & 0.177065 & 0.08145        \\ \hline
+25 & 0.18911  & 0.01897        \\ \hline
+30 & 0.185796 & 0.03616        \\ \hline
 \end{tabular}
+%\begin{tablenotes}
+%\item[1] qwerty; \item[2] asdfgh
+%\end{tablenotes}
+\end{threeparttable}
+\end{center}
+\label{table:tableLegendre}
+\caption{Results from using Gauss-Legendre Quadrature for calculating the integral with an exact solution equal to $0.192766$}
 \end{table}
 
-\blindtext % Dummy text
-
-\begin{equation}
-\label{eq:emc}
-e = mc^2
-\end{equation}
-
-\blindtext % Dummy text
 
 %------------------------------------------------
 
