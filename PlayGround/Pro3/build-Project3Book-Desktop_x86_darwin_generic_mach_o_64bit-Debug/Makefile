@@ -52,8 +52,10 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Project3Book/main.cpp 
-OBJECTS       = main.o
+SOURCES       = ../Project3Book/libbok.cpp \
+		../Project3Book/main.cpp 
+OBJECTS       = libbok.o \
+		main.o
 DIST          = /Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/qdevice.pri \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/device_config.prf \
@@ -220,6 +222,7 @@ DIST          = /Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf 
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/qt_config.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/spec_post.prf \
+		../Project3Book/.qmake.stash \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/toolchain.prf \
@@ -241,7 +244,8 @@ DIST          = /Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf 
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/exceptions.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/yacc.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/lex.prf \
-		../Project3Book/Project3Book.pro  ../Project3Book/main.cpp
+		../Project3Book/Project3Book.pro libbok.h ../Project3Book/libbok.cpp \
+		../Project3Book/main.cpp
 QMAKE_TARGET  = Project3Book
 DESTDIR       = 
 TARGET        = Project3Book
@@ -429,6 +433,7 @@ Makefile: ../Project3Book/Project3Book.pro /Users/andreas/Qt/5.13.1/clang_64/mks
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/qt_config.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/toolchain.prf \
@@ -618,6 +623,7 @@ Makefile: ../Project3Book/Project3Book.pro /Users/andreas/Qt/5.13.1/clang_64/mks
 /Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/qt_config.prf:
 /Users/andreas/Qt/5.13.1/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/andreas/Qt/5.13.1/clang_64/mkspecs/features/toolchain.prf:
@@ -663,6 +669,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -687,7 +694,10 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../Project3Book/main.cpp 
+libbok.o: ../Project3Book/libbok.cpp ../Project3Book/libbok.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o libbok.o ../Project3Book/libbok.cpp
+
+main.o: ../Project3Book/main.cpp ../Project3Book/libbok.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Project3Book/main.cpp
 
 ####### Install

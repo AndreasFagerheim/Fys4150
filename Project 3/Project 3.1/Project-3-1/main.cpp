@@ -19,6 +19,7 @@ double int_function(double x1, double y1, double z1, double x2, double y2, doubl
     }
 }
 void gaussLegendreIntegral(int start, int stop, int order, double *values, int counter);
+void gaussLaguerreIntegral(int N,double *intValues, int counter);
 int main()
 {
      int order;
@@ -42,14 +43,37 @@ int main()
      outfile << "------------------------------------------------------------"<<endl;
      outfile << setw(5)<<"N"<<setw(20)<<"Numerical value"<<setw(20)<<"Relative error"<<endl<<endl;
      outfile.close();
-    //----------------------- Start the ingral--------------------
+    //----------------------- Start the gauss-Legendre--------------------
      int samples  =6;
      double *integralValues = new double[samples];
+     cout<<"--------------------------------------------"<<endl;
+     cout<<"Started integrting using Gauss-Legendre"<<endl;
+     cout<<"--------------------------------------------"<<endl;
      for(int i = 1;i<(samples+1);i++){
           order = i*5;
-          gaussLegendreIntegral(a,b,order,integralValues, (i-1));
-          outfile.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/GaussLegendreData.txt", ios::app);//std::ios_base::app
-          outfile<<setw(5)<<order<<setw(15)<<setprecision(6)<<integralValues[i-1]<<setw(20)<<setprecision(4)<<fabs(integralValues[i-1] - exact_value)/exact_value<<endl;
+          //gaussLegendreIntegral(a,b,order,integralValues, (i-1));
+          //outfile.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/GaussLegendreData.txt", ios::app);//std::ios_base::app
+          //outfile<<setw(5)<<order<<setw(15)<<setprecision(6)<<integralValues[i-1]<<setw(20)<<setprecision(4)<<fabs(integralValues[i-1] - exact_value)/exact_value<<endl;
+          //outfile.close();
+     }
+
+     //----------------------- Start the gauss-Legendre--------------------
+     outfile.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/GaussLaguerreData.txt", ios::trunc);//std::ios_base::app
+     outfile << "Exact value of integration: "<< setprecision(6)<<exact_value<<endl<<endl;
+     outfile << "Integrating using Gauss-Laguerre Quadrature with a order N polynomal."<<endl;
+     outfile << "------------------------------------------------------------"<<endl;
+     outfile << setw(5)<<"N"<<setw(20)<<"Numerical value"<<setw(20)<<"Relative error"<<endl<<endl;
+     outfile.close();
+     int samples2 = 4;
+     double *integralValues2 = new double[samples];
+     cout<<"--------------------------------------------"<<endl;
+     cout<<"Started integrting using Gauss-Laguerre"<<endl;
+     cout<<"--------------------------------------------"<<endl;
+     for(int i = 1;i<(samples2+1);i++){
+          order = i*5;
+          gaussLaguerreIntegral(order,integralValues2, (i-1));
+          outfile.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/GaussLaguerreData.txt", ios::app);//std::ios_base::app
+          outfile<<setw(5)<<order<<setw(15)<<setprecision(6)<<integralValues2[i-1]<<setw(20)<<setprecision(4)<<fabs(integralValues2[i-1] - exact_value)/exact_value<<endl;
           outfile.close();
      }
 }  // end of main program
@@ -100,7 +124,22 @@ void gaussLegendreIntegral(int start, int stop, int order, double *integralValue
      delete [] weights;
 }
 
-void gaussLaguerreIntegral(int n){
+
+double integrandSPherical(double r1, double theta1, double phi1,double r2, double theta2, double phi2){
+    double alpha = 2;
+    double cosbeta = cos(theta1)*cos(theta2)+sin(theta1)*sin(theta2)*cos(phi1-phi2);
+    double r12 = sqrt(r1*r1 +r2*r2 - 2*r1*r2*cosbeta);
+    double exponential = -(2*alpha-1)*(r1+r2);
+    if(r12 < pow(10.0, -6)||isnan(r12)){ //checking if demoniator is zero
+        return 0;
+    }else{
+        //alternative return
+        // return sin(theta1)*sin(theta2)/r12;
+        return exp(exponential)*sin(theta1)*sin(theta2)/r12;
+    }
+}
+
+void gaussLaguerreIntegral(int N,double *intValues,int counter){
     double pi = 4*atan(1);
     double exact_value = 5*pi*pi/(16*16.);
     double theta_start = 0, theta_stop = pi;
@@ -109,21 +148,45 @@ void gaussLaguerreIntegral(int n){
 
     // distanses integrated with gauss-laguerre and thefore needs n+1 points
     // because of called functions from lib.h
-    double *r = new double [n+1];
-    double *weightsR = new double [n+1];
+    double *r = new double [N+1];
+    double *weightsR = new double [N+1];
 
     //angles integrated with legendre functions from earlier
-    double *theta = new double[n];
-    double *phi = new double[n];
-    double *weightsTheta = new double[n];
-    double *weightsPhi = new double[n];
+    double *theta = new double[N];
+    double *phi = new double[N];
+    double *weightsTheta = new double[N];
+    double *weightsPhi = new double[N];
 
     //distance
-    gauss_laguerre(r,weightsR,n,alpha);
+    gauss_laguerre(r,weightsR,N,alpha);
     //angles
-    gaussLegendre(theta_start,theta_stop,theta,weightsTheta,n);
-    gaussLegendre(phi_start,phi_stop,phi,weightsPhi,n);
+    gaussLegendre(theta_start,theta_stop,theta,weightsTheta,N);
+    gaussLegendre(phi_start,phi_stop,phi,weightsPhi,N);
 
+
+    double integral = 0;
+    for(int i = 0;i<N;i++){
+        for(int j = 0;j<N;j++){
+            for(int k = 0;k<N;k++){
+                for(int l = 0;l<N;l++){
+                    for(int m = 0;m<N;m++){
+                        for(int n = 0;n<N;n++){
+                            integral += weightsR[i+1]*weightsR[j+1]*weightsTheta[k]*weightsTheta[l]*weightsPhi[m]*weightsPhi[n]*integrandSPherical(r[i+1],theta[k],phi[m],r[j+1],theta[l],phi[n]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    intValues[counter] = integral;
+    cout << "Gauss-Laguerre with N = "<<N<<endl;
+    cout << "Numerical value "<<integral<<endl;
+    delete [] r;
+    delete [] phi;
+    delete [] theta;
+    delete [] weightsR;
+    delete [] weightsPhi;
+    delete [] weightsTheta;
 
 
 }

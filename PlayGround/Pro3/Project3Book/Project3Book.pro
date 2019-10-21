@@ -5,4 +5,8 @@ CONFIG -= qt
 CONFIG +=sdk_no_version_check
 
 SOURCES += \
+        libbok.cpp \
         main.cpp
+
+HEADERS += \
+    libbok.h
