@@ -91,7 +91,7 @@ double gammln(double);
 //  Note that you need to call it with a given value of alpha,
 // called alf here. This comes from x^{alpha} exp(-x)
 
-void gauss_laguerre(double *x, double *w, int n, double alf)
+void gauleg(double *x, double *w, int n, double alf)
 {
     int i,its,j;
     double ai;

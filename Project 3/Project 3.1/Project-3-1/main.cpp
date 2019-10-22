@@ -142,12 +142,13 @@ void gaussLegendreIntegral(int start, int stop, int order, double *integralValue
 
     double integral = 0.;
     for(int i = 0;i<order;i++){
-        for(int j = 0;j<order;j++){
-            for(int k = 0;k<order;k++){
-                for(int l = 0;l<order;l++){
-                    for(int m = 0;m<order;m++){
-                        for(int n = 0;n<order;n++){
-                            integral += weights[i]*weights[j]*weights[k]*weights[l]*weights[m]*weights[n]*int_function(roots[i],roots[j],roots[k],roots[l],roots[m],roots[n]);
+     for(int j = 0;j<order;j++){
+      for(int k = 0;k<order;k++){
+       for(int l = 0;l<order;l++){
+        for(int m = 0;m<order;m++){
+         for(int n = 0;n<order;n++){
+           integral += weights[i]*weights[j]*weights[k]*weights[l]*weights[m]*weights[n]*
+                   int_function(roots[i],roots[j],roots[k],roots[l],roots[m],roots[n]);
                         }
                     }
                 }
@@ -195,7 +196,8 @@ void gaussLaguerreIntegral(int N,double *intValues,int counter){
                 for(int l = 0;l<N;l++){
                     for(int m = 0;m<N;m++){
                         for(int n = 0;n<N;n++){
-                            integral += weightsR[i+1]*weightsR[j+1]*weightsTheta[k]*weightsTheta[l]*weightsPhi[m]*weightsPhi[n]*integrandSPherical2(r[i+1],theta[k],phi[m],r[j+1],theta[l],phi[n]);
+                            integral += weightsR[i+1]*weightsR[j+1]*weightsTheta[k]*weightsTheta[l]*weightsPhi[m]*weightsPhi[n]*
+                                    integrandSPherical2(r[i+1],theta[k],phi[m],r[j+1],theta[l],phi[n]);
                         }
                     }
                 }
