@@ -4,3 +4,9 @@ Integrating using Gauss-Legendre Quadrature with a order N polynomal.
 ------------------------------------------------------------
     N     Numerical value      Relative error
 
+    5              0                   1
+   10              0                   1
+   15              0                   1
+   20              0                   1
+   25              0                   1
+   30              0                   1

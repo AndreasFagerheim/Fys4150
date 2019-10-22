@@ -149,10 +149,44 @@ other via the classical Coulomb interaction, namely
    \langle \frac{1}{|{\bf r}_1-{\bf r}_2|} \rangle=\int_{-\infty}^{\infty} d{\bf r}_1d{\bf r}_2  e^{-2\alpha (r_1+r_2)}\frac{1}{|{\bf r}_1-{\bf r}_2|}.
 \end{equation}
 
-Note that our wave function is not normalized, but we dont nedd to worry abou this.
+Note that our wave function is not normalized, but we dont nedd to worry about this.
 
 This integral can be solved in closed form and the answer is
 $5\pi^2/16^2$.
+This integral can be rewritten in to spherical coordinates by change of variables. We are then only left with 2 infinite integrals. The Laguerre
+polynomials are defined for $x\in [0,\infty)$ and we change to
+spherical coordinates
+
+\[
+   d{\bf r}_1d{\bf r}_2  = r_1^2dr_1 r_2^2dr_2 dcos(\theta_1)dcos(\theta_2)d\phi_1d\phi_2 
+\]
+want to integrate over $d\theta_i" $instead of $d\cos(\theta_i)$ and use that $d\cos(\theta_i) = sin(\theta_i)d\theta_i$ to ge
+\[
+= r_1^2dr_1 r_2^2dr_2 sin(\theta_1)sin(\theta_2)d\theta_1d\theta_2d\phi_1d\phi_2
+\]
+
+with
+
+\[
+   \frac{1}{r_{12}}= \frac{1}{\sqrt{r_1^2+r_2^2-2r_1r_2cos(\beta)}}
+\]
+
+and 
+
+\[
+cos(\beta) = cos(\theta_1)cos(\theta_2)+sin(\theta_1)sin(\theta_2)cos(\phi_1-\phi_2)).
+\]
+
+This leads to the intgral in speherical coordinates
+\begin{equation}
+	\langle \frac{1}{{r_{12}}} \rangle=\int d\lambda  r_1^2r_2^2sin(\theta_1)sin(\theta_2)e^{-2\alpha (r_1+r_2)}\frac{1}{r_{12}}
+\end{equation}
+where we used $d\lambda  =dr_1 dr_2d\theta_1\theta_2d\phi_1d\phi_2$. Next making the substitution $4r_1 = u"$ og $4r_2 = v"$ where we use that $\alpha = 2$ we get
+
+\begin{equation}
+	\frac{1}{(2\alpha)^5}\int d\tilde{\lambda}  u^2v^2sin(\theta_1)sin(\theta_2)\frac{e^{-(u+v)}}{\sqrt{u^2+v^2-2uv \cdot cos(\beta)}}
+\end{equation} 
+where  $\tilde{d\lambda}  =du dvd\theta_1\theta_2d\phi_1d\phi_2$
 
 %------------------------------------------------
 

@@ -82,3 +82,4 @@ double func(double x){
     double value = 4/(1.0+x*x);
     return value;
 }
+

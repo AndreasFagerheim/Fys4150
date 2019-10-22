@@ -17,3 +17,4 @@ Integrating using Gauss-Legendre Quadrature with a order N polynomal.
    10   0.14583
    10   0.14455
    10  0.011017
+   10  0.011017

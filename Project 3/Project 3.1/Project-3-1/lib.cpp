@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <stdio.h>
+#include <fstream>
 using namespace std;
 
 /*
@@ -144,4 +145,150 @@ double gammln( double xx)
 #undef MAXIT
 
 
+/* This function is from lib.h belonging to prof. Morten Hjorth-Jensen and found through
+ * available github repository.
+double ran0(long *idum)
+    ** is an "Minimal" random number generator of Park and Miller
+    ** (see Numerical recipe page 279). Set or reset the input value
+    ** idum to any integer value (except the unlikely value MASK)
+    ** to initialize the sequence; idum must not be altered between
+    ** calls for sucessive deviates in a sequence.
+    ** The function returns a uniform deviate between 0.0 and 1.0.
+    */
 
+#define IA 16807
+#define IM 2147483647
+#define AM (1.0/IM)
+#define IQ 127773
+#define IR 2836
+#define MASK 123459876
+
+double ran0(long *idum)
+{
+   long     k;
+   double   ans;
+
+   *idum ^= MASK;
+   k = (*idum)/IQ;
+   *idum = IA*(*idum - k*IQ) - IR*k;
+   if(*idum < 0) *idum += IM;
+   ans=AM*(*idum);
+   *idum ^= MASK;
+   return ans;
+}
+#undef IA
+#undef IM
+#undef AM
+#undef IQ
+#undef IR
+#undef MASK
+double int_MC_brute(double *x){
+    double alpha = 2.0;
+    double cons = -2*alpha;
+    double exp1 = (cons*sqrt(x[0]*x[0]+x[1]*x[1]+x[2]*x[2]));
+    double exp2 = (cons*sqrt(x[3]*x[3]+x[4]*x[4]+x[5]*x[5]));
+    double denom = sqrt(pow((x[0]-x[3]),2) +pow((x[1]-x[4]),2)+pow((x[2]-x[5]),2));
+
+    if(denom < pow(10.,-6.)){ // cheking if denominator is zero
+        return 0;
+    }else{
+        return exp(exp1+exp2)/denom;
+    }
+}
+void  MCBrute(int dim, double a, double b, int samples, ofstream &file){
+
+    double x[dim];
+    long idum = -1;
+    double int_mc = 0.;
+    double variance = 0.;
+    double sum_sigma = 0.;
+
+    double fx;
+    // evaluating integral
+    for(int i = 0;i<=samples;i++){
+        for(int j = 0;j<dim;j++){
+            x[j] = a + (b-a)*ran0(&idum);  // z = a +(b-a)x -> x [0,1] p. 273
+        }
+        fx = int_MC_brute(x);
+        int_mc +=fx;
+        sum_sigma += fx*fx;
+    }
+    double jacobidet = pow((b-a),dim);
+    int_mc = jacobidet*int_mc/((double) samples);
+    sum_sigma = jacobidet*sum_sigma/((double) samples);
+    variance = sum_sigma-int_mc*int_mc;
+
+    cout<<"Brute forcce Monte Carlo = "<<int_mc<<", N = "<<samples<<endl;
+    file.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/MCBruteData.txt", ios::app);//std::ios_base::app
+    file<<setw(5)<<samples<<setw(15)<<setprecision(6)<<int_mc<<setw(25)<<setprecision(4)<<variance<<endl;
+    file.close();
+
+}
+
+double int_MC_spherical(double *x){
+
+
+
+}
+void MonteCarlo(int n){
+    double int_mc = 0.;
+    double variance = 0.;
+    double sum_sigma = 0.;
+    double fx;
+    long idum = -1;
+    double x[6];
+    double pi = 4*atan(1);
+    double jacobidet = 4*pow(pi,4.)*1.0/16.0;// Volume contains 4 jacobideterminants(pi,pi,2pi,2pi) and a scaling factor (1/16)
+    // evaluating integral
+    for(int i = 1;i<n;i++){
+
+        for(int j = 0;j<2;j++){         //radial points
+            double y = ran0(&idum);
+            x[j] = -0.25*log(1.-y);     //p.367
+        }
+        for(int j = 2;j<4;j++){         //angular
+            x[j] = 2*pi*ran0(&idum);
+        }
+        for(int j = 4;j<6;j++){        //anfular
+            x[j] = pi*ran0(&idum);
+        }
+
+        fx = int_MC_spherical(x);
+        int_mc +=fx;
+        sum_sigma +=fx*fx;
+    }
+
+    int_mc = jacobidet*int_mc/n;
+    sum_sigma = jacobidet*sum_sigma/n;
+    variance = sum_sigma-int_mc*int_mc;
+
+    cout<< "Monte Carlo i.s.:  "<<int_mc<<endl;
+
+}
+// first try at setting up integral function to evaluate but gives data that are slightly off
+// dont know whats causing this but have rewritten the function ti untegrate in integrandSPherical2
+double integrandSPherical(double r1, double theta1, double phi1,double r2, double theta2, double phi2){
+    double alpha = 2;
+    double cosbeta = cos(theta1)*cos(theta2)+sin(theta1)*sin(theta2)*cos(phi1-phi2);
+    double r12 = sqrt(r1*r1 +r2*r2 - 2*r1*r2*cosbeta);
+    double exponential = -(2*alpha-1)*(r1+r2);
+    if(r12 < pow(10.0, -6)||isnan(r12)){ //checking if demoniator is zero
+        return 0;
+    }else{
+        //alternative return
+        //return sin(theta1)*sin(theta2)/r12;
+        return exp(exponential)*sin(theta1)*sin(theta2)/r12;
+    }
+}
+//integrand for laguerre to evaluate. This gives right values.
+double integrandSPherical2(double r1, double theta1, double phi1,double r2, double theta2, double phi2){
+    double alpha = 2;
+    double cosbeta = cos(theta1)*cos(theta2)+sin(theta1)*sin(theta2)*cos(phi1-phi2);
+    double r12 = sqrt(r1*r1 +r2*r2 - 2*r1*r2*cosbeta);
+    double exponential = -(2*alpha-1)*(r1+r2);
+    if(r12 < pow(10.0, -6)||isnan(r12)){ //checking if demoniator is zero
+        return 0;
+    }else{
+        return 1.0/(32*pow(alpha,5))*sin(theta1)*sin(theta2)/r12;
+    }
+}
