@@ -260,8 +260,29 @@ and
 where $w_i$ and$x_i$ are the original weights and mesh points in the interval [-1,1], while $\tilde{w}_i$ and $\tilde{x}_i$ are the new weights and mesh points in the interval $[0,\infty\rangle$.
 
 \subsection{Monte Carlo brute force}
+Earlier we evaluated the integral with methods rooted in (8) whet weights and and specific mesh points. Monte Carlo methods make use of probability distrubutin functions to evaluate the integral. The brute force method uses the simplest form of distrubuitin which is uniform over $x\in[0,1]$.
+\begin{equation}
+I =\int_{a}^{b}f(x)dx \approx h\sum_{i=1}^{N} f(x_{i-1/2}
+\end{equation}
+
+where $h = (b - a) / N$ and $b=1,a=0$ for uniform distrubution. The change of variable can be done with 
+\begin{equation}
+z_i = a + (b-a) x_i)
+\end{equation}
+and when we do this we have to multiply with the jacobideterminant:
+
+\begin{equation}
+ \prod\limits_{i=0}^D (a_i - b_i),
+\end{equation}
+In our case this will corrispond to the volume we integrate over.
 The function \textit{ran0}  are copied from Hjort-Jensens github repository \footnote{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Programs/LecturePrograms/programs/cppLibrary/lib.cpp}. This function gives us the ability to generate random numbers in the limit $[0,1]$
 \subsection{Monte Carlo method improved}
+
+In the imporved method we have to use
+\begin{equation}
+I =\int_{a}^{b}f(x)dx \approx \frac{1}{N}\sum_{i=1}^{N} f(x_i)p(x_i)
+\end{equation}
+further we use an exponential PDF.
 
 
 
