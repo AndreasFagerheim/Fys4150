@@ -91,7 +91,7 @@ double gammln(double);
 //  Note that you need to call it with a given value of alpha,
 // called alf here. This comes from x^{alpha} exp(-x)
 
-void gauleg(double *x, double *w, int n, double alf)
+void gauss_laguerre(double *x, double *w, int n, double alf)
 {
     int i,its,j;
     double ai;
@@ -281,7 +281,7 @@ void MonteCarlo(int n, ofstream &file){
     double time = ((double)(end-start)/CLOCKS_PER_SEC);
     cout<<"Monte Carlo i.s = "<<int_mc<<", N = "<<n<<endl;
     file.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/MCData.txt", ios::app);//std::ios_base::app
-    file<<setw(5)<<setprecision(6)<<int_mc<<setw(20)<<setprecision(4)<<variance<<setw(15)<<n<<setprecision(3)<<setw(10)<<time<<endl;
+    file<<setw(5)<<setprecision(6)<<int_mc<<setw(20)<<setprecision(4)<<variance<<setw(15)<<<<setprecision(3)<<setw(10)<<time<<endl;
     file.close();
 }
 // first try at setting up integral function to evaluate but gives data that are slightly off

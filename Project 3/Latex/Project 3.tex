@@ -241,7 +241,12 @@ The Gauss-Laguerre uses the weihgt function $W(x)  = x^\alpha e^{-x}$. Where its
 \begin{equation}
 	\tilde{x}_i = tan(\frac{\pi}{4}(1+x_i)
 \end{equation}
-
+Finding the weights are now made with 
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.55]{Laguerre.png}
+\caption{Code snippet of programs that sets upt the weights and mesh points}
+\end{figure}
 
 
 where $w_i$ and$x_i$ are the original weights and mesh points in the interval [-1,1], while $tilde{w}_i$ and $\tilde{x}_i$ are the new weights and mesh points in the interval $[0,\infty\rangle$.
@@ -258,7 +263,7 @@ The function\textit{ran0}  are copied from Hjort-Jensens github repository \foot
 
 
 \subsection{Gauss-Legendre Quadrature}
-The implemented Gauss-Legendre Quadrature method yields the results given in \textbf{Table 1} when used to solve (\ref{integral}). With $N=25$ the relative error is at its lowest, but is still $1.9 \%$.
+The implemented Gauss-Legendre Quadrature method yields the results given in \textbf{Table 1} when used to solve (\ref{integral}). With $N=25$ the relative error is at its lowest, but is still $1.9 \%$. 
 
 
 
@@ -281,7 +286,7 @@ N  & Integral & \multicolumn{1}{l|}{Relative error} & Time      \\ \hline
 
 
 \subsection{Gauss-Laguerre Quadrature}
-This is the result for Gauss-Laguerre 
+This result from integrating with Gauss-Laguerre Quadrature method is shown in\textbf{Table 2}. This method conerges faster towards the exact value  $0.192766$. And with N = 25 we have a precision of 3 digits equalt to the exact answer. Time used comared to Gauss-Legendre is not so different. Gauss-Laguerre can be said to outperform Gausse-Legendre on precision where it already at N = 15 has better precision than GL at any N.
 
 \begin{table}[h]
 \centering
@@ -297,11 +302,8 @@ N  & Integral & \multicolumn{1}{l|}{Relative error} & Time      \\ \hline
 \end{tabular}
 \caption{Results from using Gauss-Laguerre Quadrature for calculating the integral with an exact solution equal to $0.192766$}
 \end{table}
-A statement requiring citation \cite{Figueredo:2009dg}.
-\blindtext % Dummy text
-
 \subsection{Monte Carlo brute force}
-
+Integrating numerically using brute force Monte Carlo method yields the results shown in \textbf{Table 3}. Here the results fluctuates where its closer at N = 
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|c|c|}
@@ -330,14 +332,14 @@ $10^9$ & 0.19276  & 0.00876                       & 396 s    \\ \hline
 \end{tabular}
 \caption{Results from using the method Monte Carlo with importance sampling for calculating the integral with an exact solution equal to $0.192766$}
 \end{table}
-\blindtext % Dummy text
+
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 
 \begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
-
+%A statement requiring citation \cite{Hjorth-Jensen:2015dg}.
 \bibitem[Hjorth-Jensen, 2015]{Hjorth-Jensen:2015dg}
 Hjort-Jensen, M. (2015).
 \newblock Computational Physics.
