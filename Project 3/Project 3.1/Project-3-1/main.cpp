@@ -182,7 +182,7 @@ void gaussLaguerreIntegral(int N,double *intValues,int counter){
     double *weightsTheta = new double[N];
     double *weightsPhi = new double[N];
 
-    //distance
+    //distance( radial)
     gauss_laguerre(r,weightsR,N,alpha);
     //angles
     gaussLegendre(theta_start,theta_stop,theta,weightsTheta,N);

@@ -108,8 +108,8 @@ Gauss-Laguerre quadrature and Monte-Carlo integration.
 %----------------------------------------------------------------------------------------
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
-\section{Introduction}
-\section{Theory}
+
+\section{Introduction/Theory}
 
 %\lettrine[nindent=0em,lines=3]{W} 
 The wave function of each electron can be assumed to be modelled like
@@ -237,22 +237,30 @@ The functions \textit{gaussLegendre (called gauleg at github library)} and \text
 
 \subsection{Gauss-Laguerre Quadrature}
 
-The Gauss-Laguerre uses the weihgt function $W(x)  = x^\alpha e^{-x}$. Where its associated polynomials are orthogonal in the interval $x\in[0,\infty]$ and are called Laguerre polynomials. Our rewritten integral in spherical coordinates lets us easily factor out the weight function $u^2v^2 e^-{u+v}$ and the integrand becomes
+The Gauss-Laguerre uses the weihgt function $W(x)  = x^\alpha e^{-x}$. Where its associated polynomials are orthogonal in the interval $x\in[0,\infty]$ and are called Laguerre polynomials. Our rewritten integral in spherical coordinates lets us easily factor out the weight function $u^2v^2 e^-{u+v}$ and from (4) the integrand becomes
 \begin{equation}
-	\tilde{x}_i = tan(\frac{\pi}{4}(1+x_i)
+sin(\theta_1)sin(\theta_2)\frac{1}{\sqrt{u^2+v^2-2uv \cdot cos(\beta)}}
 \end{equation}
-Finding the weights are now made with 
+
+The calls below shows how we set the radial part of the integrat to be solved with Laguerre polynimials and the angular parts with Legendre polynomials.
 \begin{figure}[h]
 \center
 \includegraphics[scale=0.55]{Laguerre.png}
 \caption{Code snippet of programs that sets upt the weights and mesh points}
 \end{figure}
 
-
-where $w_i$ and$x_i$ are the original weights and mesh points in the interval [-1,1], while $tilde{w}_i$ and $\tilde{x}_i$ are the new weights and mesh points in the interval $[0,\infty\rangle$.
+We use the change of variable to integrate over the wanted limits $x\in[0,\infty]$
+\begin{equation}
+	\tilde{x}_i = tan(\frac{\pi}{4}(1+x_i)
+\end{equation}
+and
+\begin{equation}
+	\tilde{w}_i = \frac{\pi}{4}\frac{w_i}{cos^2({\frac{\pi}{2}(1+x_i)})}
+\end{equation}
+where $w_i$ and$x_i$ are the original weights and mesh points in the interval [-1,1], while $\tilde{w}_i$ and $\tilde{x}_i$ are the new weights and mesh points in the interval $[0,\infty\rangle$.
 
 \subsection{Monte Carlo brute force}
-The function\textit{ran0}  are copied from Hjort-Jensens github repository \footnote{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Programs/LecturePrograms/programs/cppLibrary/lib.cpp}. This function gives us the ability to generate random numbers in the limit $[0,1]$
+The function \textit{ran0}  are copied from Hjort-Jensens github repository \footnote{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Programs/LecturePrograms/programs/cppLibrary/lib.cpp}. This function gives us the ability to generate random numbers in the limit $[0,1]$
 \subsection{Monte Carlo method improved}
 
 
@@ -286,7 +294,7 @@ N  & Integral & \multicolumn{1}{l|}{Relative error} & Time      \\ \hline
 
 
 \subsection{Gauss-Laguerre Quadrature}
-This result from integrating with Gauss-Laguerre Quadrature method is shown in\textbf{Table 2}. This method conerges faster towards the exact value  $0.192766$. And with N = 25 we have a precision of 3 digits equalt to the exact answer. Time used comared to Gauss-Legendre is not so different. Gauss-Laguerre can be said to outperform Gausse-Legendre on precision where it already at N = 15 has better precision than GL at any N.
+This result from integrating with Gauss-Laguerre Quadrature method is shown in\textbf{Table 2}. This method converges faster towards the exact value  $0.192766$. And with N = 25 we have a precision of 3 digits equalt to the exact answer. Time used comared to Gauss-Legendre is not so different. Gauss-Laguerre can be said to outperform Gausse-Legendre on precision where it already at N = 15 has better precision than GL at any N.
 
 \begin{table}[h]
 \centering
@@ -303,7 +311,7 @@ N  & Integral & \multicolumn{1}{l|}{Relative error} & Time      \\ \hline
 \caption{Results from using Gauss-Laguerre Quadrature for calculating the integral with an exact solution equal to $0.192766$}
 \end{table}
 \subsection{Monte Carlo brute force}
-Integrating numerically using brute force Monte Carlo method yields the results shown in \textbf{Table 3}. Here the results fluctuates where its closer at N = 
+Integrating numerically using brute force Monte Carlo method yields the results shown in \textbf{Table 3}. Here the results fluctuates where its closer at $N = 10^5$ than for nome higher values of N. This makes little sense and makes it harder to compare the reults to the other methods. 
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|c|c|}
@@ -319,6 +327,8 @@ $10^9$ & 0.19449  & 0.01823                       & 350 s    \\ \hline
 \end{table}
 
 \subsection{Monte Carlo with importance sampling}
+
+The results from integration using Monte Carlo with importance sampling is shown in \textbf{Table 4}. The precision of this methods is far superior to the three others. With $N = 10^6$ its precision is already at the level of 3 leading digits and it takes only $0.4 s$. Gauss-Legendre do not reach this precision even for N = 30 and it takes nearly 2 minutes to reach a value vit relative error of 0.036. Gauss-Legendre reaches precision level of 3 leading digits but it takes 2 minutes and 5 seconds. The brute force Monte Carlo method is as said hard to compare to the other methods and needs a higher number for N to converge. For $N = 10^9$ the both Monte Carlo methods start to take quite some time to evaluate the integral. Using parallelization would make this less of a problem, but due to time restrictions i have not implemented this.
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|c|c|}
@@ -333,7 +343,8 @@ $10^9$ & 0.19276  & 0.00876                       & 396 s    \\ \hline
 \caption{Results from using the method Monte Carlo with importance sampling for calculating the integral with an exact solution equal to $0.192766$}
 \end{table}
 
-
+\section{Conclusion}
+It is clear that to the Monte Carlo with importance sampling is far superior to the other methods both in time and precision. I suspect the brute force Monte Carlo method actually to converge faster than it did in this article and this may comes from some fault in my implementation. 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
