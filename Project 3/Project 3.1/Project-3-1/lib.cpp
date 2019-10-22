@@ -5,7 +5,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <fstream>
+#include <time.h>
 using namespace std;
+
+
 
 /*
 ** The function
@@ -196,7 +199,9 @@ double int_MC_brute(double *x){
     }
 }
 void  MCBrute(int dim, double a, double b, int samples, ofstream &file){
+    clock_t start, end;
 
+    start = clock();
     double x[dim];
     long idum = -1;
     double int_mc = 0.;
@@ -206,6 +211,7 @@ void  MCBrute(int dim, double a, double b, int samples, ofstream &file){
     double fx;
     // evaluating integral
     for(int i = 0;i<=samples;i++){
+        //creates points to integrate over
         for(int j = 0;j<dim;j++){
             x[j] = a + (b-a)*ran0(&idum);  // z = a +(b-a)x -> x [0,1] p. 273
         }
@@ -217,20 +223,30 @@ void  MCBrute(int dim, double a, double b, int samples, ofstream &file){
     int_mc = jacobidet*int_mc/((double) samples);
     sum_sigma = jacobidet*sum_sigma/((double) samples);
     variance = sum_sigma-int_mc*int_mc;
-
+    end = clock();
+    double time = ((double)(end-start)/CLOCKS_PER_SEC);
     cout<<"Brute forcce Monte Carlo = "<<int_mc<<", N = "<<samples<<endl;
     file.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/MCBruteData.txt", ios::app);//std::ios_base::app
-    file<<setw(5)<<samples<<setw(15)<<setprecision(6)<<int_mc<<setw(25)<<setprecision(4)<<variance<<endl;
+    file<<setw(5)<<setprecision(6)<<int_mc<<setw(20)<<setprecision(4)<<variance<<setw(15)<<samples<<setprecision(3)<<setw(10)<<time<<endl;
     file.close();
 
 }
 
 double int_MC_spherical(double *x){
-
+    double alpha = 2;
+    double cosbeta = cos(x[2])*cos(x[3])+sin(x[2])*sin(x[3])*cos(x[4]-x[5]);
+    double r12 = sqrt(x[0]*x[0] +x[1]*x[1] - 2*x[0]*x[1]*cosbeta);
+    if(r12 < pow(10.0, -6)||isnan(r12)){ //checking if demoniator is zero
+        return 0;
+    }else{
+        return sin(x[2])*sin(x[3])*x[0]*x[0]*x[1]*x[1]/r12;  //1.0/(32*pow(alpha,5))*
+    }
 
 
 }
-void MonteCarlo(int n){
+void MonteCarlo(int n, ofstream &file){
+    clock_t start, end;
+    start = clock();
     double int_mc = 0.;
     double variance = 0.;
     double sum_sigma = 0.;
@@ -246,11 +262,11 @@ void MonteCarlo(int n){
             double y = ran0(&idum);
             x[j] = -0.25*log(1.-y);     //p.367
         }
-        for(int j = 2;j<4;j++){         //angular
-            x[j] = 2*pi*ran0(&idum);
-        }
-        for(int j = 4;j<6;j++){        //anfular
+        for(int j = 2;j<4;j++){         //angular (theta)
             x[j] = pi*ran0(&idum);
+        }
+        for(int j = 4;j<6;j++){        //angular (phi)
+            x[j] = 2*pi*ran0(&idum);
         }
 
         fx = int_MC_spherical(x);
@@ -261,9 +277,12 @@ void MonteCarlo(int n){
     int_mc = jacobidet*int_mc/n;
     sum_sigma = jacobidet*sum_sigma/n;
     variance = sum_sigma-int_mc*int_mc;
-
-    cout<< "Monte Carlo i.s.:  "<<int_mc<<endl;
-
+    end = clock();
+    double time = ((double)(end-start)/CLOCKS_PER_SEC);
+    cout<<"Monte Carlo i.s = "<<int_mc<<", N = "<<n<<endl;
+    file.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/MCData.txt", ios::app);//std::ios_base::app
+    file<<setw(5)<<setprecision(6)<<int_mc<<setw(20)<<setprecision(4)<<variance<<setw(15)<<n<<setprecision(3)<<setw(10)<<time<<endl;
+    file.close();
 }
 // first try at setting up integral function to evaluate but gives data that are slightly off
 // dont know whats causing this but have rewritten the function ti untegrate in integrandSPherical2

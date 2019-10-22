@@ -2,6 +2,7 @@
 #include "lib.h"
 #include <cmath>
 #include <fstream>
+#include <time.h>
 using namespace std;
 
 //     Here we define various functions called by the main program
@@ -26,6 +27,8 @@ int main()
 {
      int order;
      double a, b;
+     clock_t start, end;
+     double time;
      a = -2;
      b = 2;
      //cout << "Read in the number of integration points" << endl;
@@ -43,19 +46,22 @@ int main()
      outfile << "Exact value of integration: "<< setprecision(6)<<exact_value<<endl<<endl;
      outfile << "Integrating using Gauss-Legendre Quadrature with a order N polynomal."<<endl;
      outfile << "------------------------------------------------------------"<<endl;
-     outfile << setw(5)<<"N"<<setw(20)<<"Numerical value"<<setw(20)<<"Relative error"<<endl<<endl;
+     outfile << setw(5)<<"N"<<setw(20)<<"Numerical value"<<setw(20)<<"Relative error"<<setw(10)<< "Time"<<endl<<endl;
      outfile.close();
     //----------------------- Start the gauss-Legendre--------------------
      int samples  =6;
      double *integralValues = new double[samples];
-     cout<<"--------------------------------------------"<<endl;
+     cout<<"------------------------------------------------"<<endl;
      cout<<"Started integrting using Gauss-Legendre"<<endl;
-     cout<<"--------------------------------------------"<<endl;
+     cout<<"------------------------------------------------"<<endl;
      for(int i = 1;i<(samples+1);i++){
           order = i*5;
-          //gaussLegendreIntegral(a,b,order,integralValues, (i-1));
+          start = clock();
+          gaussLegendreIntegral(a,b,order,integralValues, (i-1));
+          end = clock();
+          time = ((double)(end-start)/CLOCKS_PER_SEC);
           outfile.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/GaussLegendreData.txt", ios::app);//std::ios_base::app
-          outfile<<setw(5)<<order<<setw(15)<<setprecision(6)<<integralValues[i-1]<<setw(20)<<setprecision(4)<<fabs(integralValues[i-1] - exact_value)/exact_value<<endl;
+          outfile<<setw(5)<<order<<setw(15)<<setprecision(6)<<integralValues[i-1]<<setw(20)<<setprecision(4)<<fabs(integralValues[i-1] - exact_value)/exact_value<<setw(15)<<setprecision(3)<<time<<endl;
           outfile.close();
      }
 
@@ -64,52 +70,64 @@ int main()
      outfile << "Exact value of integration: "<< setprecision(6)<<exact_value<<endl<<endl;
      outfile << "Integrating using Gauss-Laguerre Quadrature with a order N polynomal."<<endl;
      outfile << "------------------------------------------------------------"<<endl;
-     outfile << setw(5)<<"N"<<setw(20)<<"Numerical value"<<setw(20)<<"Relative error"<<endl<<endl;
+     outfile << setw(5)<<"N"<<setw(20)<<"Numerical value"<<setw(20)<<"Relative error"<<setw(10)<< "Time"<<endl<<endl;
      outfile.close();
-     int samples2 = 5;
+     int samples2 = 6;
      double *integralValues2 = new double[samples2];
-     cout<<"--------------------------------------------"<<endl;
+     cout<<"------------------------------------------------"<<endl;
      cout<<"Started integrting using Gauss-Laguerre"<<endl;
-     cout<<"--------------------------------------------"<<endl;
+     cout<<"------------------------------------------------"<<endl;
      for(int i = 1;i<(samples2+1);i++){
           order = i*5;
+          start = clock();
           gaussLaguerreIntegral(order,integralValues2, (i-1));
+          end = clock();
+          time = ((double)(end-start)/CLOCKS_PER_SEC);
           outfile.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/GaussLaguerreData.txt", ios::app);//std::ios_base::app
-          outfile<<setw(5)<<order<<setw(15)<<setprecision(6)<<integralValues2[i-1]<<setw(20)<<setprecision(4)<<fabs(integralValues2[i-1] - exact_value)/exact_value<<endl;
+          outfile<<setw(5)<<order<<setw(15)<<setprecision(6)<<integralValues2[i-1]<<setw(20)<<setprecision(4)<<fabs(integralValues2[i-1] - exact_value)/exact_value<<setprecision(3)<<setw(15)<<time<<endl;
           outfile.close();
      }
 
-     cout<<"--------------------------------------------"<<endl;
+     cout<<"------------------------------------------------"<<endl;
      cout<<"Started integrting using Brute force Monte Carlo"<<endl;
-     cout<<"--------------------------------------------"<<endl;
-     //----------------------- Start the gauss-Legendre--------------------
+     cout<<"------------------------------------------------"<<endl;
+     //----------------------- Start the Monte Carlo brute force--------------------
 
      outfile.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/MCBruteData.txt", ios::trunc);//std::ios_base::app
      outfile << "Exact value of integration: "<< setprecision(6)<<exact_value<<endl<<endl;
      outfile << "Integrating using brute force Monte Carlo with N samples"<<endl;
      outfile << "------------------------------------------------------------"<<endl;
-     outfile << setw(5)<<"N"<<setw(20)<<"Numerical value"<<setw(20)<<"variance"<<endl<<endl;
+     outfile << setw(5)<<"Numerical value"<<setw(15)<<"variance"<<setw(10)<<"N"<<setw(10)<< "Time"<<endl<<endl;
      outfile.close();
 
 
-     for(int i =0 ;i<4;i++){
+     for(int i =0 ;i<5;i++){
         int samples3 = pow(10,(5+i));
-       // MCBrute(6,-5.,5.,samples3,outfile);
+        MCBrute(6,-5.,5.,samples3,outfile);
      }
+
+
+     cout<<"------------------------------------------------"<<endl;
+     cout<<"Started integrting using Monte Carlo i.s." <<endl;
+     cout<<"------------------------------------------------"<<endl;
+     //----------------------- Start the Monte carlo with smapling--------------------
+
+     outfile.open("/Users/andreas/Computational Physics/Fys4150/Project 3/Project 3.1/Project-3-1/MCData.txt", ios::trunc);//std::ios_base::app
+     outfile << "Exact value of integration: "<< setprecision(6)<<exact_value<<endl<<endl;
+     outfile << "Integrating using Monte Carlo i.s. with N samples"<<endl;
+     outfile << "------------------------------------------------------------"<<endl;
+     outfile << setw(5)<<"Numerical value"<<setw(15)<<"variance"<<setw(10)<<"N"<<setw(10)<< "Time"<<endl<<endl;
+     outfile.close();
+
+     for(int i =0 ;i<5;i++){
+        int samples4 = pow(10,(5+i));
+        MonteCarlo(samples4, outfile);
+     }
+
 }  // end of main program
 
 
 
-
-
-
-
-
-
-
-
-//-----------------------------------------------------------------------
-//  this function defines the function to integrate
 
 void gaussLegendreIntegral(int start, int stop, int order, double *integralValues, int counter){
     //   reserve space in memory for vectors containing the mesh points

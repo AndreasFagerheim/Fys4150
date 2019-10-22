@@ -239,42 +239,75 @@ Text requiring further explanation\footnote{Example footnote}.
 The implemented Gauss-Legendre Quadrature method yields the results given in \textbf{Table 1} when used to solve (\ref{integral}). With $N=25$ the relative error is at its lowest, but is still $1.9 \%$.
 
 
-\par
-\begin{table}[h]
 
-\begin{center}
-\begin{threeparttable}
-\begin{tabular}{|l|l|c|}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|c|c|}
 \hline
-N  & Integral & \multicolumn{1}{l|}{Relative error} \\ \hline
-5  & 0.354602 & 0.83950         \\ \hline
-10 & 0.129834 & 0.32650         \\ \hline
-15 & 0.199475 & 0.03480         \\ \hline
-20 & 0.177065 & 0.08145        \\ \hline
-25 & 0.18911  & 0.01897        \\ \hline
-30 & 0.185796 & 0.03616        \\ \hline
+N  & Integral & \multicolumn{1}{l|}{Relative error} & Time      \\ \hline
+5  & 0.354602 & 0.8395                              & 0.00248 s \\ \hline
+10 & 0.129834 & 0.3265                              & 0.156 s   \\ \hline
+15 & 0.199475 & 0.0348                              & 1.82 s    \\ \hline
+20 & 0.177065 & 0.08145                             & 10.6 s    \\ \hline
+25 & 0.18911  & 0.01897                             & 38.8 s    \\ \hline
+30 & 0.185796 & 0.03616                             & 116 s     \\ \hline
 \end{tabular}
-%\begin{tablenotes}
-%\item[1] qwerty; \item[2] asdfgh
-%\end{tablenotes}
-\end{threeparttable}
-\end{center}
-\label{table:tableLegendre}
 \caption{Results from using Gauss-Legendre Quadrature for calculating the integral with an exact solution equal to $0.192766$}
 \end{table}
-
-
 %------------------------------------------------
 
-\section{Discussion}
-wichs shows that precisions cost resources and time.
-\subsection{Subsection One}
 
+\subsection{Gauss-Laguerre Quadrature}
+This is the result for Gauss-Laguerre
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|c|c|}
+\hline
+N  & Integral & \multicolumn{1}{l|}{Relative error} & Time      \\ \hline
+5  & 0.17345  & 0.1002                              & 0.00447 s \\ \hline
+10 & 0.18645  & 0.03273                             & 0.173 s   \\ \hline
+15 & 0.18975  & 0.0156                              & 1.93 s    \\ \hline
+20 & 0.19108  & 0.008738                            & 10.7 s    \\ \hline
+25 & 0.19174  & 0.005322                            & 41.2 s    \\ \hline
+30 & 0.192113 & 0.003386                            & 125 s     \\ \hline
+\end{tabular}
+\caption{Results from using Gauss-Legendre Quadrature for calculating the integral with an exact solution equal to $0.192766$}
+\end{table}
 A statement requiring citation \cite{Figueredo:2009dg}.
 \blindtext % Dummy text
 
-\subsection{Subsection Two}
+\subsection{Monte Carlo brute force}
 
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|c|c|}
+\hline
+N                     & Integral & \multicolumn{1}{l|}{Variance} & Time(s)  \\ \hline
+10\textasciicircum{}5 & 0.19726  & 0.03705                       & 0.0392 s \\ \hline
+10\textasciicircum{}6 & 0.13695  & 0.01793                       & 0.342 s  \\ \hline
+10\textasciicircum{}7 & 0.16192  & 0.01744                       & 3.59 s   \\ \hline
+10\textasciicircum{}8 & 0.19467  & 0.01152                       & 36.1 s   \\ \hline
+10\textasciicircum{}9 & 0.19449  & 0.01823                       & 350 s    \\ \hline
+\end{tabular}
+\caption{Results from using Gauss-Legendre Quadrature for calculating the integral with an exact solution equal to $0.192766$}
+\end{table}
+
+\subsection{Monte Carlo with importance sampling}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|c|c|}
+\hline
+N                     & Integral & \multicolumn{1}{l|}{Variance} & Time(s)  \\ \hline
+10\textasciicircum{}5 & 0.19437  & 0.0082                        & 0.0433 s \\ \hline
+10\textasciicircum{}6 & 0.19298  & 0.00633                       & 0.4 s    \\ \hline
+10\textasciicircum{}7 & 0.19271  & 0.01058                       & 4.03 s   \\ \hline
+10\textasciicircum{}8 & 0.19279  & 0.00889                       & 39.8 s   \\ \hline
+10\textasciicircum{}9 & 0.19276  & 0.00876                       & 396 s    \\ \hline
+\end{tabular}
+\caption{Results from using Gauss-Legendre Quadrature for calculating the integral with an exact solution equal to $0.192766$}
+\end{table}
 \blindtext % Dummy text
 
 %----------------------------------------------------------------------------------------

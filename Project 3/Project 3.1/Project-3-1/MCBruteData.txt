@@ -2,5 +2,10 @@ Exact value of integration: 0.192766
 
 Integrating using brute force Monte Carlo with N samples
 ------------------------------------------------------------
-    N     Numerical value            variance
+Numerical value       variance         N      Time
 
+0.197257            -0.03705         100000    0.0392
+0.136952            -0.01793        1000000     0.342
+0.16192            -0.01744       10000000      3.59
+0.194669            -0.01152      100000000      36.1
+0.194494            -0.01823     1000000000       350

@@ -2,10 +2,11 @@ Exact value of integration: 0.192766
 
 Integrating using Gauss-Laguerre Quadrature with a order N polynomal.
 ------------------------------------------------------------
-    N     Numerical value      Relative error
+    N     Numerical value      Relative error      Time
 
-    5        0.17345              0.1002
-   10       0.186457             0.03273
-   15       0.189758              0.0156
-   20       0.191081            0.008738
-   25        0.19174            0.005322
+    5        0.17345              0.1002        0.00447
+   10       0.186457             0.03273          0.173
+   15       0.189758              0.0156           1.93
+   20       0.191081            0.008738           10.7
+   25        0.19174            0.005322           41.2
+   30       0.192113            0.003386            125

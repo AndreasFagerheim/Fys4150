@@ -1,10 +1,11 @@
 Exact value of integration: 0.192766
 
-Integrating using Gauss-Laguerre Quadrature with a order N polynomal.
+Integrating using Monte Carlo i.s. with N samples
 ------------------------------------------------------------
-    N     Numerical value      Relative error
+Numerical value       variance         N      Time
 
-    5      0.0626625              0.6749
-   10       0.181567              0.0581
-   15       0.195886             0.01619
-   20       0.195636             0.01489
+0.194373            0.008164         100000    0.0433
+0.192976            0.006328        1000000       0.4
+0.192717             0.01058       10000000      4.03
+0.192789            0.008894      100000000      39.8
+0.192764            0.008761     1000000000       396
